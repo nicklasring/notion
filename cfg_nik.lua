@@ -56,6 +56,7 @@ defbindings("WScreen", {
 
 defbindings("WMPlex.toplevel", {
   kpress(META2.."R", "ioncore.exec('rofi -show run')"),
+  kpress(CTRL.."Q", "WRegion.rqclose_propagate(_, _sub)"),
   kpress(META2.."P", "ioncore.exec('rofi -show window')"),
   kpress(META.."Tab", "ioncore.exec('rofi -show window')"),
   kpress(META2.."Return", "ioncore.exec_on(_, XTERM)"),
@@ -98,6 +99,7 @@ defbindings("WTiling", {
     kpress("V", "WTiling.split_at(_, _sub, 'right', true)"),
     kpress("S", "WTiling.split_at(_, _sub, 'bottom', true)"),
     kpress("X", "WTiling.unsplit_at(_, _sub)"),
+    kpress("Q", "WTiling.close()"),
     kpress("Up", "move_current.move(_, 'up')"),
     kpress("Down", "move_current.move(_, 'down')"),
     kpress("Left", "move_current.move(_, 'left')"),
