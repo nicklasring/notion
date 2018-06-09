@@ -99,7 +99,6 @@ defbindings("WTiling", {
     kpress("V", "WTiling.split_at(_, _sub, 'right', true)"),
     kpress("S", "WTiling.split_at(_, _sub, 'bottom', true)"),
     kpress("X", "WTiling.unsplit_at(_, _sub)"),
-    kpress("Q", "WTiling.close()"),
     kpress("Up", "move_current.move(_, 'up')"),
     kpress("Down", "move_current.move(_, 'down')"),
     kpress("Left", "move_current.move(_, 'left')"),
