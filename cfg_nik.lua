@@ -61,8 +61,8 @@ defbindings("WMPlex.toplevel", {
   kpress(META.."Tab", "ioncore.exec('rofi -show window')"),
   kpress(META.."Return", "ioncore.exec_on(_, XTERM)"),
   kpress("F1", "mod_query.query_menu(_, _sub, 'custommenu', 'Shortcut:')"),
-  kpress("F2", "term_with_name(_, _sub, nil, 'Term name:')"),
-  kpress("F3", nil),
+  kpress("F2", "term_with_name(_, _sub, nil, 'XTERM name:', false)"),
+  kpress("F3", "term_with_name(_, _sub, nil, 'TMUX name:', true)"),
   kpress("F5", nil),
   kpress("F6", nil),
   submap(CTRL.."K", {

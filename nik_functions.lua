@@ -14,7 +14,7 @@ function os.customexec(cmd, raw)
     return s
 end
 
-function term_with_name(mplex, sub, themenu, prompt)
+function term_with_name(mplex, sub, themenu, prompt, tmux)
     if type(sub)=="string" then
         -- Backwards compat. shift
         prompt=themenu
@@ -42,7 +42,11 @@ function term_with_name(mplex, sub, themenu, prompt)
     local ntab=xform_menu({}, menu, "")
 
     local function handle(mplex, str)
-        ioncore.exec('xterm -xrm "XTerm.vt100.allowTitleOps: false" -T "' .. str .. '"')
+        if tmux then
+            ioncore.exec('xterm -xrm "XTerm.vt100.allowTitleOps: false" -T "' .. str .. '" -e "tmux new-session -s "' .. str)
+        else
+            ioncore.exec('xterm -xrm "XTerm.vt100.allowTitleOps: false" -T "' .. str .. '"')
+        end
     end
 
     mod_query.query(mplex, prompt, nil, handle,mod_query.make_completor(complete), "menu."..menuname)
