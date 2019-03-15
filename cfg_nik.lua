@@ -49,6 +49,11 @@ defmenu("custommenu", {
   submenu("Ssh", "ssh"),
 })
 
+defmenu("testmenu", {
+  menuentry("db", "ioncore.exec_on(_, 'xterm -xrm \"XTerm.vt100.allowTitleOps: false\" -T whatever')"),
+  menuentry("Exit",  "ioncore.shutdown()"),
+})
+
 -- Defbindings
 defbindings("WScreen", {
   kpress("F12", nil),
@@ -56,13 +61,15 @@ defbindings("WScreen", {
 
 defbindings("WMPlex.toplevel", {
   kpress(META2.."R", "ioncore.exec('rofi -show run')"),
+  kpress(CTRL.."Q", "WRegion.rqclose_propagate(_, _sub)"),
   kpress(META2.."P", "ioncore.exec('rofi -show window')"),
   kpress(META.."Tab", "ioncore.exec('rofi -show window')"),
-  kpress(META2.."Return", "ioncore.exec_on(_, XTERM)"),
+  kpress(META.."Return", "ioncore.exec_on(_, XTERM)"),
   kpress("F1", "mod_query.query_menu(_, _sub, 'custommenu', 'Shortcut:')"),
-  kpress("F2", "ioncore.exec_on(_, XTERM)"),
+  kpress("F2", "term_with_name(_, _sub, nil, 'Term name:')"),
+  kpress("F3", nil),
   kpress("F5", nil),
-  kpress("F6", "ioncore.create_ws(_)"),
+  kpress("F6", nil),
   submap(CTRL.."K", {
     kpress("R", "ioncore.restart()"),
     kpress("T", "toggle_tab_bar(_)"),
