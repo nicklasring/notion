@@ -49,11 +49,6 @@ defmenu("custommenu", {
   submenu("Ssh", "ssh"),
 })
 
-defmenu("testmenu", {
-  menuentry("db", "ioncore.exec_on(_, 'xterm -xrm \"XTerm.vt100.allowTitleOps: false\" -T whatever')"),
-  menuentry("Exit",  "ioncore.shutdown()"),
-})
-
 -- Defbindings
 defbindings("WScreen", {
   kpress("F12", nil),
