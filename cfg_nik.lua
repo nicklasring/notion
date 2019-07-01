@@ -62,6 +62,7 @@ defbindings("WMPlex.toplevel", {
   kpress(META.."Return", "term_with_name(_, _sub, nil, 'XTERM name:', false)"),
   kpress("F1", "mod_query.query_menu(_, _sub, 'custommenu', 'Shortcut:')"),
   kpress("F2", "ioncore.exec_on(_, XTERM)"),
+  kpress("F2", "term_with_name(_, _sub, nil, 'XTERM name:', false)"),
   kpress("F3", "term_with_name(_, _sub, nil, 'TMUX name:', true)"),
   kpress("F5", nil),
   kpress("F6", nil),
