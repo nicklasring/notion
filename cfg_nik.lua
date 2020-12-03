@@ -43,6 +43,7 @@ defbindings("WMPlex", {
   kpress("F1", "mod_query.query_menu(_, _sub, 'custommenu', 'Shortcut:')"),
   kpress("F2", "ioncore.exec_on(_, XTERM)"),
   kpress("F3", "term_with_name(_, _sub, nil, 'TMUX name:', true)"),
+  kpress("F9", "mod_query.query_workspace(_)"),
   submap(CTRL.."K", {
     kpress("R", "ioncore.restart()"),
     kpress("T", "toggle_tab_bar(_)"),
