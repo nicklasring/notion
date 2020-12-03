@@ -1,33 +1,13 @@
-dopath("app")
-dopath("xinerama_switcher")
-dopath("move_current")
-dopath("mod_notionflux")
-dopath("net_client_list")
-
-function toggle_tab_bar(frame)
-  local mode = frame:mode()
-  if mode == "tiled" then
-    frame:set_mode('tiled-alt')
-  else
-    frame:set_mode('tiled')
-  end
-end
-
 CTRL="Control+"
 META="Mod1+"
 META2="Mod4+"
 
--- Terminal emulator
+--- Terminal emulator
 if os and os.execute("test -x /usr/bin/urxvt") == 0 then
     XTERM="/usr/bin/urxvt"
 else
     XTERM="/usr/bin/xterm"
 end
-
-ioncore.set {
-  dblclick_delay=250,
-  kbresize_delay=3600000,
-}
 
 defmenu("session", {
   menuentry("Restart", "ioncore.restart()"),
@@ -49,12 +29,12 @@ defmenu("custommenu", {
   submenu("Ssh", "ssh"),
 })
 
--- Defbindings
-defbindings("WScreen", {
-  kpress("F12", nil),
-})
+-- WMPlex context bindings
+--
+-- These bindings work in frames and on screens. The innermost of such
+-- contexts/objects always gets to handle the key press. 
 
-defbindings("WMPlex.toplevel", {
+defbindings("WMPlex", {
   kpress(META2.."R", "ioncore.exec('rofi -show run')"),
   kpress(CTRL.."Q", "WRegion.rqclose_propagate(_, _sub)"),
   kpress(META2.."P", "ioncore.exec('rofi -show window')"),
@@ -62,10 +42,7 @@ defbindings("WMPlex.toplevel", {
   kpress(META.."Return", "term_with_name(_, _sub, nil, 'XTERM name:', false)"),
   kpress("F1", "mod_query.query_menu(_, _sub, 'custommenu', 'Shortcut:')"),
   kpress("F2", "ioncore.exec_on(_, XTERM)"),
-  kpress("F2", "term_with_name(_, _sub, nil, 'XTERM name:', false)"),
   kpress("F3", "term_with_name(_, _sub, nil, 'TMUX name:', true)"),
-  kpress("F5", nil),
-  kpress("F6", nil),
   submap(CTRL.."K", {
     kpress("R", "ioncore.restart()"),
     kpress("T", "toggle_tab_bar(_)"),
@@ -74,12 +51,10 @@ defbindings("WMPlex.toplevel", {
   })
 })
 
-defbindings("WClientWin", {
-  submap(CTRL.."K", {
-    kpress("Q", "ioncore.shutdown()"),
-    kpress("semicolon", "WClientWin.quote_next(_)"),
-  })
-})
+-- WFrame context bindings
+--
+-- These bindings are common to all types of frames. Some additional
+-- frame bindings are found in some modules' configuration files.
 
 defbindings("WFrame", {
   submap(CTRL.."K", {
@@ -93,7 +68,7 @@ defbindings("WFrame", {
     kpress("Y", "WFrame.set_mode(_, 'tiled')"),
     kpress("0", "WFrame.begin_kbresize(_)"),
   }),
-  mdrag(META2.."Button1", "WFrame.p_tabdrag(_)"),
+  mdrag(META2.."Button1", "WFrame.p_tabdrag(_)"),     
 })
 
 defbindings("WTiling", {

@@ -104,16 +104,4 @@ function min_tabs_tag_wrapper(fr,reg)
     show_only_necessary_tabs_in_frame(fr)
 end
 
-
---[[
-	Special keybinding override for this extension
-]]
-
---defbindings("WMPlex.toplevel", {
---    bdoc("Tag current object within the frame."),
---    kpress(META.."T", "min_tabs_tag_wrapper(_,_sub)", "_sub:non-nil"),
---})
-
-
-
 min_tabs_setup_hook()
