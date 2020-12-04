@@ -4,7 +4,7 @@ defbindings("WScreen", {
     mpress("Button3", "mod_menu.pmenu(_, _sub, 'mainmenu')"),
     
     bdoc("Display the window list menu."),
-    mpress("Button2", "mod_menu.pmenu(_, _sub, 'mainmenu')"),
+    mpress("Button2", "mod_menu.pmenu(_, _sub, 'windowlist')"),
 
 })
 
@@ -39,6 +39,7 @@ defbindings("WFrame", {
     mpress("Button5@tab", "WScreen.switch_next(_)"),
     mpress("Button4@tab", "WScreen.switch_prev(_)"),
 
+    mdrag(META2.."Button1", "WFrame.p_tabdrag(_)"),    
 })
 
 
@@ -59,3 +60,4 @@ defbindings("WFrame.floating", {
     bdoc("Move the frame."),
     mdrag("Button1@tab", "WFrame.p_move(_)"),
 })
+
