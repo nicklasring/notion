@@ -42,6 +42,7 @@ defbindings("WScreen", {
     kpress("F1", "mod_query.query_menu(_, _sub, 'mainmenu', 'Main menu:')"),
 
     kpress("F2", "ioncore.exec_on(_, XTERM)"),
+    kpress("Print", "ioncore.exec('import -window root -delay 200 /tmp/screenshot.png')"),
     kpress(META2.."Return", "ioncore.exec_on(_, XTERM)"),
 
     kpress(META2.."R", "ioncore.exec('rofi -show run')"),
